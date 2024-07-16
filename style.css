@@ -1,0 +1,187 @@
+@import url('https://fonts.cdnfonts.com/css/ica-rubrik-black');
+@import url('https://fonts.cdnfonts.com/css/poppins');
+
+.banner {
+    width: 100%;
+    height: 100vh;
+    text-align: center;
+    overflow: hidden;
+}
+.banner .slider {
+    position: absolute;
+    width: 200px;
+    height: 250px;
+    top: 10%;
+    left: calc(50% - 100px);
+    transform-style: preserve-3d;
+    transform: perspective(1000px);
+    animation: autoRun 20s linear infinite;
+    z-index: 2;
+}
+
+@keyframes autoRun {
+    from {
+        transform: perspective(1000px) rotateX(-16deg) rotateY(0deg);
+    }to{
+        transform: perspective(1000px) rotateX(-16deg) rotateY(360deg);
+    }
+    
+}
+
+.banner .slider .item {
+    cursor: pointer;
+    position: absolute;
+    inset: 0 0 0 0;
+    transform:
+        rotateY(calc( (var(--position) - 1) * (360 / var(--quantity)) * 1deg ))
+        translateZ(550px);
+}
+.banner .slider .item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.banner .content {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(1400px, 100vw);
+    height: max-content;
+    padding-bottom: 100px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1;
+}
+.banner .content h1 {
+    font-family: 'ICA Rubrik';
+    font-size: 16em;
+    line-height: 1em;
+    color: #25283B;
+    position: relative;
+}
+.banner .content h1::after {
+    position: absolute;
+    inset: 0 0 0 0;
+    content: attr(data-content);
+    z-index: 2;
+    -webkit-text-stroke: 2px #d2d2d2;
+    color: transparent;
+}
+.banner .content .author {
+    font-family: Poppins;
+    text-align: right;
+    max-width: 200px;
+}
+.banner .content h2{
+    font-size: 3em;
+}
+.banner .content .model {
+    background-image: url(img/model.png);
+    width: 100%;
+    height: 75vh;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-size: auto 130%;
+    background-repeat: no-repeat;
+    background-position: top center;
+    z-index: 0;
+}
+
+
+.modal {
+    display: none;
+    position: absolute;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+.modal-content {
+    font-family: Poppins;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 100px auto 50px;
+    max-width: 1400px;
+    max-height: 900px;
+}
+.modal-content img {
+    padding: 0 15px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    max-height: 900px;
+}
+.stats {
+    padding: 10px 0;
+    line-height: 120%;
+    font-size: 20px;
+    color: #f1f1f1;
+}
+.close {
+    border-radius: 50%;
+    text-align: center;
+    font-weight: 700;
+    height: 50px;
+    width: 50px;
+    font-size: 35px;
+    position: absolute;
+    left: 0;
+    top: -50px;
+    background: #fff;
+    color: #333333;
+}
+.close:hover,
+.close:focus {
+    transition: 0.5s;
+    color: rgb(199, 199, 199);
+    background-color: #474747;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+.modal-content input, .modal-content button {
+    margin: 10px;
+    padding: 10px;
+    font-size: 16px;
+}
+
+.modal-content button {
+    cursor: pointer;
+}
+
+
+
+.buttons {
+    width: 600px;
+}
+.input {
+    border-radius: 10px;
+    background:#e4e4e4;
+    font-family: Poppins;
+    font-weight: 700;
+    width: 581px;
+    color: #333;
+}
+.search, .random {
+    display: flex;
+    justify-content: space-between;
+}
+.btn-search, .btn-random  {
+    border-radius: 10px;
+    background:#e4e4e4;
+    font-family: Poppins;
+    font-weight: 700;
+    width: 250px;
+    color: #333;
+}
